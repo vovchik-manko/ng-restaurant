@@ -1,0 +1,48 @@
+<mat-table [dataSource]="items">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>
+      Product Name
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let item">
+      {{item.name}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef>
+      Product Price
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let item">
+      {{item.price}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="amount">
+    <mat-header-cell *matHeaderCellDef>
+      Product Amount
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let item">
+      {{item.amount}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="total">
+    <mat-header-cell *matHeaderCellDef>
+      Total
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let item">
+      {{item.amount * item.price}}
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+</mat-table>
+
+<div class="text-right p-3">
+  <strong>Total: {{calculateTotal(items)}}</strong>
+</div>
