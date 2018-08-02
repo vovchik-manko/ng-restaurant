@@ -66,6 +66,11 @@ export class TablesDetailsComponent implements OnInit, OnDestroy {
       );
   }
 
+  setPrice(productName: string) {
+    const p = this.getSelectedProduct(this.menuItems, productName);
+    this.productPrice = p ? p.price : null;
+  }
+
   reset() {
     this.order = new OrderDto();
     this.resetProductData();
@@ -91,11 +96,6 @@ export class TablesDetailsComponent implements OnInit, OnDestroy {
 
   private initData(o: OrderDto) {
     this.order = new OrderDto(o);
-  }
-
-  private setPrice(productName: string) {
-    const p = this.getSelectedProduct(this.menuItems, productName);
-    this.productPrice = p ? p.price : null;
   }
 
   private getSelectedProduct(menuItems = [], productCode: string): ProductDto {
