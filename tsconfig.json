@@ -1,9 +1,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "outDir": "./dist/out-tsc",
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -15,6 +15,17 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@rest/*": [
+        "src/app/rest/*"
+      ],
+      "@components/*": [
+        "src/app/components/*"
+      ],
+      "@enums/*": [
+        "src/app/enums/*"
+      ]
+    }
   }
 }

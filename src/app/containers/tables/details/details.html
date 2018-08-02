@@ -1,0 +1,83 @@
+<div class="p-2">
+  <div
+    fxLayout="column"
+    fxLayout.gt-sm="row wrap"
+    fxLayoutAlign.gt-sm="start start"
+
+    fxLayoutGap.gt-sm="2%"
+    class="mb-2">
+
+    <form
+      fxFlex.gt-sm="48%"
+      #form="ngForm"
+      (submit)="add(form.invalid)">
+
+      <mat-form-field class="w-100">
+        <input
+          matInput
+          placeholder="Client name"
+          name="clientName"
+          required
+          [(ngModel)]="order.client.name">
+
+        <mat-error>Field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <mat-select
+          placeholder="Menu item"
+          name="productName"
+          required
+          [(ngModel)]="productName"
+          (ngModelChange)="setPrice($event)">
+
+          <mat-option
+            *ngFor="let i of menuItems"
+            [value]="i.code">
+
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>Field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <input
+          matInput
+          placeholder="Price"
+          name="price"
+          required
+          [disabled]="true"
+          [ngModel]="productPrice">
+
+        <mat-error>Field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <mat-select
+          placeholder="Amount of product"
+          name="amount"
+          [(ngModel)]="amount">
+
+          <mat-option
+            *ngFor="let a of amounts"
+            [value]="a">
+
+            {{a}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        [disabled]="form.pristine">
+
+        Add
+      </button>
+    </form>
+
+    <div fxFlex.gt-sm="48%">
+      <ordered-items [items]="order.products"></ordered-items>
+    </div>
+  </div>
+</div>
